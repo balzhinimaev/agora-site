@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2e9">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="description" content="Агора — философия, которую можно обдумать. Короткие объяснения, философские школы, первоисточники и вопросы без готовых ответов.">
+  <meta property="og:title" content="Агора — место для мысли">
+  <meta property="og:description" content="Большие вопросы. Ваш собственный ответ. Исследуйте философию в своём темпе и продолжайте разговор в Telegram.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <title>Агора — место для мысли</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  <div class="topline"><div class="shell">Философия начинается с вопроса<span>Читайте. Сомневайтесь. Обсуждайте.</span></div></div>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#/" aria-label="Агора — на главную">
+        <svg class="brand-symbol" width="37" height="40" viewBox="0 0 37 40" fill="none" aria-hidden="true"><path d="M3 36V18a15.5 15.5 0 0 1 31 0v18M11 36V19a7.5 7.5 0 0 1 15 0v17M0 36h37" stroke="currentColor" stroke-width="2"/><path d="M18.5 1v9M3 18h8m15 0h8" stroke="currentColor" stroke-width="2"/></svg>
+        <span class="brand-name">Агора<span class="brand-caption">место для мысли</span></span>
+      </a>
+      <button class="menu-toggle icon-button" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Открыть меню"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.5"/></svg></button>
+      <nav class="primary-nav" id="primary-nav" aria-label="Основная навигация">
+        <a href="#/library" data-nav="library">Библиотека</a>
+        <a href="#/schools" data-nav="schools">Школы</a>
+        <a href="#/paths" data-nav="paths">Маршруты</a>
+        <a href="#/readings" data-nav="readings">Первоисточники</a>
+        <a class="nav-saved" href="#/saved" data-nav="saved"><svg width="17" height="19" viewBox="0 0 20 22" fill="none" aria-hidden="true"><path d="M4 2h12v18l-6-4-6 4V2Z" stroke="currentColor" stroke-width="1.5"/></svg><span>Сохранённое</span><span class="saved-count" id="saved-count" hidden>0</span></a>
+        <a href="#/search" data-nav="search" aria-label="Поиск по Агоре"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="1.5"/></svg><span class="sr-only">Поиск</span></a>
+      </nav>
+      <a class="header-bot" href="https://t.me/burlearn_bot" target="_blank" rel="noopener noreferrer">В Telegram <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+  <main id="main" tabindex="-1"><div class="shell loading"><span class="eyebrow">Агора</span><h1>Открываем библиотеку…</h1><p>Собираем мысли, вопросы и книги на одной странице.</p></div></main>
+  <noscript><div class="shell empty-state"><h2>Для библиотеки нужен JavaScript</h2><p>Включите JavaScript в браузере или откройте <a href="https://t.me/burlearn_bot">Агору в Telegram</a>.</p></div></noscript>
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div><a class="footer-brand" href="#/">Агора<span aria-hidden="true">.</span></a><p>Не коллекция готовых ответов.<br>Место, где можно подумать самому.</p></div>
+      <nav aria-label="Дополнительная навигация"><a href="#/glossary">Словарь понятий</a><a href="#/comparisons">Сравнить подходы</a><a href="#/paths">Найти свой маршрут</a></nav>
+      <div class="footer-note"><p>Материалы открыты всем. Диалоги с ИИ — только <a href="https://t.me/burlearn_bot" target="_blank" rel="noopener noreferrer">в Telegram ↗</a>.</p><p>Закладки и отметки о чтении хранятся только в этом браузере. С Telegram они не синхронизируются.</p></div>
+    </div>
+    <div class="shell footer-bottom"><span>Любопытство важнее уверенности.</span><a href="#/about">О материалах и данных</a></div>
+  </footer>
+  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>
