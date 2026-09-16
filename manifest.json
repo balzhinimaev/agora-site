@@ -2,8 +2,8 @@
   "version": "0.11.0",
   "files": {
     "index.html": "36af4a101de8449577d8b2f9b1a25a294d4427193c7e7101c702e7fc23bbd976",
-    "styles.css": "6919ce880ccb7149921e72b1abce9a210def6856df87aec0f207fa5dafe1c855",
-    "app.js": "53320c2d9d746a05f9fb187cee58c7732a2c262e5663333051135e74e3c57e9c",
+    "styles.css": "578fb5f287defa59a573b17a23c5a1a64ebaa1aaa29be1bcb157813f32f83f6f",
+    "app.js": "b6e71176b8d734693070ef94f4241de955b50398399584fae9c77febcdf889d7",
     "favicon.svg": "884298862fba56110eb3dd0441d982bb674adc700f7585032f04d4a6ba640e58",
     "knowledge.json": "6b09848d9be911cbeab015da8801feb5a4dcd25c0d1ff5ad35dfcbf41dbe9836"
   }

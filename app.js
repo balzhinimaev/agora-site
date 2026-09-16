@@ -227,7 +227,7 @@
   function pathPage(path) {
     const read = pathProgress(path);
     const next = path.ids.find(id => !isRead('article', id)) || path.ids[0];
-    return `<div class="shell">${detailHeader(path, 'path', `${path.ids.length} материалов · маршрут чтения`, [{ title: 'Маршруты', href: '#/paths' }])}<div class="detail-layout"><div><p class="article-question">${escape(path.goal)}</p><div class="path-progress"><span>Прочитано ${read} из ${path.ids.length} в этом браузере</span><progress value="${read}" max="${path.ids.length}" aria-label="Прогресс чтения"></progress></div><div class="actions"><a class="button accent-button" href="${routeLink('article', next, path.id)}">${read === path.ids.length ? 'Вернуться к началу' : read ? 'Продолжить чтение' : 'Начать с первого вопроса'} ${rightArrow}</a></div>${localNote()}<ol class="path-list">${findArticles(path.ids).map((article, index) => `<li><span class="step-number" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span><div class="step-content"><h2><a href="${routeLink('article', article.id, path.id)}">${escape(article.title)}</a>${isRead('article', article.id) ? '<span class="step-read">Прочитано ✓</span>' : ''}</h2><p>${escape(article.question)}</p></div><a class="arrow-circle" href="${routeLink('article', article.id, path.id)}" aria-label="${escape(`Шаг ${index + 1}: ${article.title}`)}">→</a></li>`).join('')}</ol><p class="search-context">Порядок предложен редакцией. Это не обязательная последовательность и не утверждение о прямом историческом влиянии.</p></div><aside class="detail-aside"><div class="aside-inner"><div class="aside-block"><h2>Как читать</h2><p>Сначала попробуйте ответить на вопрос сами. После чтения найдите довод, с которым не согласны. Проверьте его на своём примере.</p></div><div class="aside-block"><h2>Другой формат</h2><p>Этот маршрут доступен и в боте. Прогресс сайта туда не переносится.</p>${telegram('path', path.id, 'Открыть маршрут в боте', 'button secondary small')}</div></div></aside></div></div>`;
+    return `<div class="shell">${detailHeader(path, 'path', `${path.ids.length} материалов · маршрут чтения`, [{ title: 'Маршруты', href: '#/paths' }])}<div class="detail-layout"><div><p class="article-question">${escape(path.goal)}</p><div class="path-progress"><span>Прочитано ${read} из ${path.ids.length} в этом браузере</span><progress value="${read}" max="${path.ids.length}" aria-label="Прогресс чтения"></progress></div><div class="actions"><a class="button accent-button" href="${routeLink('article', next, path.id)}">${read === path.ids.length ? 'Вернуться к началу' : read ? 'Продолжить чтение' : 'Начать с первого вопроса'} ${rightArrow}</a>${telegram('path', path.id, 'Открыть маршрут в боте', 'button secondary')}</div>${localNote()}<ol class="path-list">${findArticles(path.ids).map((article, index) => `<li><span class="step-number" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span><div class="step-content"><h2><a href="${routeLink('article', article.id, path.id)}">${escape(article.title)}</a>${isRead('article', article.id) ? '<span class="step-read">Прочитано ✓</span>' : ''}</h2><p>${escape(article.question)}</p></div><a class="arrow-circle" href="${routeLink('article', article.id, path.id)}" aria-label="${escape(`Шаг ${index + 1}: ${article.title}`)}">→</a></li>`).join('')}</ol><p class="search-context">Порядок предложен редакцией. Это не обязательная последовательность и не утверждение о прямом историческом влиянии.</p></div><aside class="detail-aside"><div class="aside-inner"><div class="aside-block"><h2>Как читать</h2><p>Сначала попробуйте ответить на вопрос сами. После чтения найдите довод, с которым не согласны. Проверьте его на своём примере.</p></div><div class="aside-block"><h2>Другой формат</h2><p>Этот маршрут доступен и в боте. Прогресс сайта туда не переносится.</p>${telegram('path', path.id, 'Открыть маршрут в боте', 'button secondary small')}</div></div></aside></div></div>`;
   }
 
   function readingsPage() {
@@ -367,7 +367,21 @@
     if (action === 'share') {
       const permalink = `${location.origin}${location.pathname}${location.hash || '#/'}`;
       try { await navigator.clipboard.writeText(permalink); announce('Ссылка на материал скопирована.'); }
-      catch { announce('Не удалось скопировать автоматически. Скопируйте ссылку из адресной строки.'); }
+      catch {
+        let box = document.querySelector('#share-box');
+        if (!box) {
+          box = document.createElement('div');
+          box.id = 'share-box';
+          box.className = 'share-box';
+          box.innerHTML = '<label for="share-url">Ссылка для копирования</label><input id="share-url" type="url" readonly><p>Скопируйте выделенную ссылку обычным способом вашего устройства.</p>';
+          button.closest('.article-tools').after(box);
+        }
+        const input = box.querySelector('input');
+        input.value = permalink;
+        input.focus();
+        input.select();
+        announce('Автоматическое копирование недоступно. Ссылка выделена для ручного копирования.');
+      }
       return;
     }
     if (action === 'reset-exercise') {
